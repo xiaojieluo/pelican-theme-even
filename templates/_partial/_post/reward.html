@@ -1,0 +1,27 @@
+{# 二维码打赏 #}
+{%- if article -%}
+  {%- if (THEMECONFIG.reward.enable and article.reward != false) or article.reward is true -%}
+    <div class="post-reward">
+      <input type="checkbox" name="reward" id="reward" hidden />
+      <label class="reward-button" for="reward">
+        Reward
+      </label>
+      <div class="qr-code">
+        {%- set qrCode = THEMECONFIG.reward.qrCode -%}
+
+        {%- if qrCode.wechat -%}
+          <label class="qr-code-image" for="reward">
+            <img class="image" src="{{ qrCode.wechat }}" title="wechat">
+          </label>
+        {%- endif -%}
+
+        {%- if qrCode.alipay -%}
+          <label class="qr-code-image" for="reward">
+            <img class="image" src="{{ qrCode.alipay }}" title="alipay">
+          </label>
+        {%- endif -%}
+
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}

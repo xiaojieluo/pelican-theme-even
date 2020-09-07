@@ -1,0 +1,57 @@
+{#- Website mata -#}
+{%- include "_partial/_head/meta.html" with context -%}
+
+{#- Website rss -#}
+{# {%- if THEMECONFIG.rss === 'default' and THEMECONFIG.feed and THEMECONFIG.feed.path -%}
+  {{ feed_tag(config.feed.path) }}
+{%- elif theme.rss -%}
+  {{ feed_tag(THEMECONFIG.rss) }}
+{%- else -%}
+  {{ feed_tag('atom.xml') }}
+{%- endif -%} #}
+
+{#- Website favicon -#}
+{%- if THEMECONFIG.favicon -%}
+  <link rel="shortcut icon" type="image/x-icon" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/{{ THEMECONFIG.favicon }}?v={{ THEMECONFIG.version }}" />
+{%- endif -%}
+
+{#- Canonical, good for google search engine -#}
+{# <link rel="canonical" href="{{ SITEURL }}/{{ page.canonical_path.replace('index.html', '') }}"/> #}
+
+{#- Fancybox styling -#}
+{%- if THEMECONFIG.fancybox -%}
+  <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/lib/fancybox/jquery.fancybox.css" />
+{%- endif -%}
+
+<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{THEME_STATIC_DIR}}/css/pygment.css ">
+
+{#- MathJax (LaTeX) support -#}
+{%- if THEMECONFIG.latex -%}
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+{%- endif -%}
+
+{#- Theme styling -#}
+<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css?v={{ THEMECONFIG.version }}" />
+
+{#- Analytics and push -#}
+{# {%- if not env.debug -%} #}
+  {%- include "_script/analytics.html" with context -%}
+  {%- include "_script/push.html" with context -%}
+{# {%- endif -%} #}
+
+{#- LeanCloud Counter -#}
+{%- include "_script/counter.html" with context%}
+
+{%- set theme = {
+  'leancloud': THEMECONFIG.leancloud|lower,
+  'toc': THEMECONFIG.toc|lower,
+  'fancybox': THEMECONFIG.fancybox|lower,
+  'pjax': THEMECONFIG.pjax|lower,
+  'latex': THEMECONFIG.latex|lower
+  } -%}
+<script>
+  window.config = JSON.stringify({{ theme }});
+</script>

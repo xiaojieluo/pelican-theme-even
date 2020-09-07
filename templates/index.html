@@ -1,0 +1,22 @@
+{%- extends "_layout.html" -%}
+{%- import '_macro/post.html' as post_template with context-%}
+{# {%- import '_macro/archive.html' as archive_template with context-%} #}
+
+{%- block title -%} {{ SITENAME }} {%- endblock -%}
+
+{%- block content -%}
+  {%- set mode = THEMECONFIG.mode.lower() -%}
+  <section id="posts" class="posts">
+    {%- if mode == 'default' -%}
+      {# {%- for post in page.posts -%} #}
+      {%- for post in articles -%}
+        {{ post_template.render(post) }}
+      {%- endfor -%}
+      {%- include "_partial/pagination.html" -%}
+    {%- else -%}
+      pass
+      {# TODO #}
+      {# {{ archive_template.render() }} #}
+    {%- endif -%}
+  </section>
+{%- endblock -%}

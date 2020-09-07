@@ -1,0 +1,9 @@
+{%- extends "_layout.html" -%}
+{# {%- import '_macro/post.html' as post_template with context -%} #}
+{% from "_macro/post.html" import render  with context %}
+
+{%- block title -%} {{ article.title }} - {{ SITENAME }} {%- endblock -%}
+
+{%- block content -%}
+  {{ render(article) }}
+{%- endblock -%}

@@ -1,0 +1,10 @@
+{%- if THEMECONFIG.leancloud.enable -%}
+  <script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "{{ THEMECONFIG.leancloud.app_id }}",
+      appKey: "{{ THEMECONFIG.leancloud.app_key }}"
+    });
+  </script>
+{%- endif -%}
+

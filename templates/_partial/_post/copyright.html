@@ -1,0 +1,20 @@
+{#- Post Copyright -#}
+{# {%- if THEMECONFIG.copyright.enable and page.copyright != False -%} #}
+{%- if THEMECONFIG.copyright.enable and article  -%}
+Copyright
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="{{ SITEURL }}">{{ AUTHOR }}</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="{{ article.url }}">{{ article.url }}</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span>
+      {%- set license = article.license or THEMECONFIG.copyright.license -%}
+      {{ license }}
+    </p>
+  </div>
+{%- endif -%}

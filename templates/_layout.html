@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+  <head>
+    {%- include '_partial/head.html' with context%}
+    <title>{%- block title -%}{%- endblock -%}</title>
+  </head>
+
+  <body>
+    {%- include '_partial/slideout.html' with context-%}
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header">
+        {%- include '_partial/header.html' with context-%}
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            {%- block content -%}{%- endblock -%}
+          </div>
+          {%- include '_partial/comments.html' with context-%}
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+        {%- include '_partial/footer.html' with context-%}
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    {# {%- include '_script/comments.html' -%} #}
+
+    {%- include '_script/libs.html' with context-%}
+    {%- include '_script/theme.html' -%}
+  </body>
+</html>

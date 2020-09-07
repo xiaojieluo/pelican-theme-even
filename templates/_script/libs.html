@@ -1,0 +1,20 @@
+{%- if THEMECONFIG.fancybox -%}
+  {%- set fancybox_js = 'fancybox/jquery.fancybox.pack.js' -%}
+{%- endif -%}
+
+{%-
+  set js_libs = {
+    'jquery': 'jquery/jquery.min.js',
+    'slideout': 'slideout/slideout.js',
+    'fancybox': fancybox_js,
+    'nprogress': nprogress_js,
+  }
+-%}
+
+{%- for _, lib in js_libs.items() -%}
+  {# {{ lib }} #}
+  {{lib}}
+  {%- if lib -%}
+    <script type="text/javascript" src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/lib/{{ lib }}"></script>
+  {%- endif -%}
+{%- endfor -%}
